@@ -1,0 +1,16 @@
+prooph_service_bus:
+    event_buses:
+        first_event_bus:
+            router:
+                async_switch: 'prooph_asynchronous_router.firstProducer'
+
+prooph_asynchronous_router:
+    producers:
+        firstProducer:
+            bridge: 'firstAsynchronousMessageProducerBridge'
+            routes:
+                App\Namespace\FirstMessage: first_routing_key
+
+services:
+    firstAsynchronousMessageProducerBridge:
+        class: TomCizek\AsynchronousRouter\Tests\DependencyInjection\Fixture\Model\FirstAsynchronousMessageProducerBridge

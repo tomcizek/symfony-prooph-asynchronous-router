@@ -1,0 +1,16 @@
+prooph_service_bus:
+    event_buses:
+        second_event_bus:
+            router:
+                async_switch: 'prooph_asynchronous_router.secondProducer'
+
+prooph_asynchronous_router:
+    producers:
+        secondProducer:
+            bridge: '@secondAsynchronousMessageProducerBridge'
+            routes:
+                App\Namespace\SecondMessage: second_routing_key
+
+services:
+    secondAsynchronousMessageProducerBridge:
+        class: TomCizek\AsynchronousRouter\Tests\DependencyInjection\Fixture\Model\SecondAsynchronousMessageProducerBridge

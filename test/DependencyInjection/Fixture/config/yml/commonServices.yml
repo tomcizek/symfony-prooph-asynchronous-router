@@ -1,0 +1,4 @@
+services:
+    Prooph\Common\Messaging\NoOpMessageConverter: ~
+    Prooph\Common\Messaging\MessageConverter:
+        alias: Prooph\Common\Messaging\NoOpMessageConverter
